@@ -73,5 +73,28 @@ def printResults(unsortedList, sortedList, algorithmUsed):
     print ("the sorted list is :: {} ", sortedList)
 
 
+
+    
+    
+# ===== insertion sort algorithm =====
+def insertionSort(container):
+    length = len(container)
+    
+    if length <= 1:
+        return
+    
+    for i in range(1,length):
+        k = container[i]
+        j = i-1
+        while j >= 0 and k < container[j]:
+            container[j+1] = container[j]
+            j = j-1
+        container[j+1] = k
+    
+    
+    
 if __name__ == "__main__":
     print("this is the file with the logic ")
+    
+
+
