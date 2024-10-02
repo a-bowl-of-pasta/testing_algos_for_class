@@ -11,7 +11,7 @@ if __name__ == "__main__":
         print("1. Bubble Sort")
         print("2. Merge Sort")
         print("3. Quick Sort")
-        print("4. Heap Sort (not implemented)")
+        print("4. Insertion Sort")
         print("5. Exit")
         
         choice = input("Select a sorting algorithm (1-5): ")
@@ -31,7 +31,7 @@ if __name__ == "__main__":
             algorithm_name = "Quick Sort"
             sorting_function = quickSort
         elif choice == '4':
-            print("Heap Sort is not implemented yet.")
+            print("Insertion Sort")
             continue
 
         while True:
