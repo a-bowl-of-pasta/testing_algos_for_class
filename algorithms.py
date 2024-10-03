@@ -14,6 +14,20 @@ def bubbleSort(container):
 
     return container 
                      
+# ===== insertion sort algorithm =====
+def insertionSort(container):
+    length = len(container)
+    
+    if length <= 1:
+        return
+    
+    for i in range(1,length):
+        k = container[i]
+        j = i-1
+        while j >= 0 and k < container[j]:
+            container[j+1] = container[j]
+            j = j-1
+        container[j+1] = k
 
 # ===== merge sort algorithm ===== 
 def merge(left, right):
@@ -49,52 +63,70 @@ def mergeSort(container):
 
     return merge(left, right)
 
-
-
-
-
-
 # ====== quick sort algorithm ====== 
-def quickSort():
-    return NULL; 
+def partition(array, low, high):
 
+    mid = (low + high) // 2
+ 
+    if(array[low] > array[mid]):
+        array[low], array[mid] = array[low], array[mid]
+
+    if(array[low] > array[high]):
+        array[low], array[high] = array[high], array[low]
+ 
+    if(array[mid] > array[high]):
+        array[mid], array[high] = array[high], array[mid]
+    
+    array[mid], array[low] = array[low], array[mid]
+
+    pivot = array[low]
+
+    i = low  +1
+    j = high
+
+    while(i <= j):
+        if (array[j] < pivot and array[i] > pivot and i < j):
+            array[j], array[i] = array[i], array[j]
+        
+        if(pivot >= array[i]):
+            i+= 1
+        if (pivot <= array[j]):
+            j -= 1
+
+    array[low], array[j] = array[j], array[low]
+            
+    return j
+
+def quickSort(a, low , high):
+    
+    if(low < high):
+    
+        pivotIndex = partition(a, low, high)
+        quickSort(a, low, pivotIndex - 1)
+        quickSort(a, pivotIndex + 1, high)
+    
+    return a
+
+# ======== helper methods =======
+     
 def genNums(startRange = 1, endRange = 100, generatedNums = 15):
     
     numbersToBeSorted = []
-    for  i in range(0, 15):
+    for  i in range(0, generatedNums):
         aNumber = rand.randint(startRange, endRange)
         numbersToBeSorted.append(aNumber)
 
     return numbersToBeSorted
 
 def printResults(unsortedList, sortedList, algorithmUsed):
-    print("the algorithm used was {} ", algorithmUsed)
-    print ("the unsorted list is :: {}", unsortedList)
-    print ("the sorted list is :: {} ", sortedList)
-
-
-
+    print(f"the algorithm used was {algorithmUsed}")
+    print (f"the unsorted list is :: {unsortedList}")
+    print (f"the sorted list is :: {sortedList} " )
     
-    
-# ===== insertion sort algorithm =====
-def insertionSort(container):
-    length = len(container)
-    
-    if length <= 1:
-        return
-    
-    for i in range(1,length):
-        k = container[i]
-        j = i-1
-        while j >= 0 and k < container[j]:
-            container[j+1] = container[j]
-            j = j-1
-        container[j+1] = k
-    
-    
-    
+    # ======= helper methods test ========
 if __name__ == "__main__":
-    print("this is the file with the logic ")
+    print("this is a test for printResuts() and genNums()")
     
-
-
+    generatedNumber = genNums(1, 50, 10) 
+    printResults(generatedNumber, generatedNumber, "no_sort_used")
+    
