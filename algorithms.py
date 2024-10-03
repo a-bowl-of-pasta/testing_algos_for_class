@@ -3,13 +3,13 @@ import random as rand
 # ======= bubble sort algorithm ======
 def bubbleSort(container):
 
-    for i in container:
+    for i in range (0, len(container)):
         temp = 0
         # ===== this is the loop that does the swapping ==== 
-        for j in range(i + 1,len(container) -1): 
-            if i > container[j] :
-                temp = i 
-                i = container[j]
+        for j in range(i + 1,len(container)): 
+            if container[i] > container[j] :
+                temp = container[i] 
+                container[i] = container[j]
                 container[j] = temp 
 
     return container 
@@ -28,6 +28,8 @@ def insertionSort(container):
             container[j+1] = container[j]
             j = j-1
         container[j+1] = k
+
+    return container
 
 # ===== merge sort algorithm ===== 
 def merge(left, right):
@@ -107,6 +109,9 @@ def quickSort(a, low , high):
     
     return a
 
+def quickSortDriver(array):
+    return quickSort(array, 0, len(array) - 1)
+
 # ======== helper methods =======
      
 def genNums(startRange = 1, endRange = 100, generatedNums = 15):
@@ -123,10 +128,43 @@ def printResults(unsortedList, sortedList, algorithmUsed):
     print (f"the unsorted list is :: {unsortedList}")
     print (f"the sorted list is :: {sortedList} " )
     
-    # ======= helper methods test ========
+    # ======= dafualt sort test ========
 if __name__ == "__main__":
-    print("this is a test for printResuts() and genNums()")
+    print("this is in case the front end does not work for whatever reason\n\n")
     
-    generatedNumber = genNums(1, 50, 10) 
-    printResults(generatedNumber, generatedNumber, "no_sort_used")
+    #
+    # I had to make copies of each array because the sorts directly manipulated them
+    # it shouldn't be too bad since the arrays are only 15 elements long
+    #
+     
+
+    # === insert
+    print("insertion sort \n")
+    unsortedList_insert = genNums()
+    copy_insertion = unsortedList_insert.copy()
+    sortedList_insert = insertionSort(copy_insertion)
+    printResults(unsortedList_insert, sortedList_insert, "inertion sort")
+
+    # === bubble
+    print("\n\nbubble sort\n")
+    unsortedList_bubble = genNums()
+    copy_bubble = unsortedList_bubble.copy()
+    sortedList_bubble = bubbleSort(copy_bubble)
+    printResults(unsortedList_bubble, sortedList_bubble, "bubble sort")
+
+    #=== merge
+    print("\n\nmerge sort\n")
+    unsortedList_merge = genNums()
+    sortedList_merge = mergeSort(unsortedList_merge)
+    printResults(unsortedList_merge, sortedList_merge, "merge sort")
+
+    # === quick
+    print("\n\nquick sort\n")
+    unsortedList_quick = genNums()
+    copy_quickSort = unsortedList_quick.copy()
+    sortedList_quick = quickSort(copy_quickSort, 0, len(copy_quickSort) - 1)
+    printResults(unsortedList_quick, sortedList_quick, "quick sort")
+
+
+
     

@@ -101,9 +101,4 @@ if __name__ == "__main__":
    
     # ==== TESTING QUICK SORT ======
    
-   # when testing quicksort make sure to make a copy of the unsorted list
-   # if not done, python will overwrite the unsorted list with the sorted one
-   #        unsortedList = randomNumberGenerator
-   #        copyOfUnsortedList = unsortedList.copy()
-   
     # ==== TESTING ___ ======
