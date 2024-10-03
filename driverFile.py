@@ -2,8 +2,6 @@
 import algorithms as oa
 
 # ===== Main Test Suite =====
-# still working on main
-
 if __name__ == "__main__":
     print("Welcome to the test suite of selected sorting algorithms!")
 
@@ -53,15 +51,17 @@ if __name__ == "__main__":
             if case_choice == '4':
                 break
 
-            given_n = [100, 1000, 10000]
-            for n in given_n:
-                if case_choice == '1':  # best case scenario
+            # List of predefined sizes
+            sizes = [100, 1000, 10000]
+
+            for n in sizes:
+                if case_choice == '1':  # Best case scenario
                     test_data = sorted(genNums(generatedNums=n))
                     print(f"In best case,")
-                elif case_choice == '2':  # average case scenario
+                elif case_choice == '2':  # Average case scenario
                     test_data = genNums(generatedNums=n)
                     print(f"In average case,")
-                elif case_choice == '3':  # worst case scenario
+                elif case_choice == '3':  # Worst case scenario
                     test_data = sorted(genNums(generatedNums=n), reverse=True)
                     print(f"In worst case,")
                 else:
@@ -71,23 +71,26 @@ if __name__ == "__main__":
                 time_taken = measureTime(sorting_function, test_data)
                 print(f"For N = {n}, it takes {time_taken:.6f} seconds")
 
-            another_n = input("Do you want to input another N (Y/N)? ").strip().upper()
-            if another_n == 'Y':
-                n = int(input("What is the N? "))
-                if case_choice == '1':  # best case scenario
-                    test_data = sorted(genNums(generatedNums=n))
-                    print(f"In best case,")
-                elif case_choice == '2':  # Average case scenario
-                    test_data = genNums(generatedNums=n)
-                    print(f"In average case,")
-                elif case_choice == '3':  # Worst case scenario
-                    test_data = sorted(genNums(generatedNums=n), reverse=True)
-                    print(f"In worst case,")
+            while True:
+                another_n = input("Do you want to input another N (Y/N)? ").strip().upper()
+                if another_n == 'Y':
+                    n = int(input("What is the N? "))
+                    if case_choice == '1':  # Best case scenario
+                        test_data = sorted(genNums(generatedNums=n))
+                        print(f"In best case,")
+                    elif case_choice == '2':  # Average case scenario
+                        test_data = genNums(generatedNums=n)
+                        print(f"In average case,")
+                    elif case_choice == '3':  # Worst case scenario
+                        test_data = sorted(genNums(generatedNums=n), reverse=True)
+                        print(f"In worst case,")
 
-                time_taken = measureTime(sorting_function, test_data)
-                print(f"For N = {n}, it takes {time_taken:.6f} seconds")
-            else:
-                break
+                    time_taken = measureTime(sorting_function, test_data)
+                    print(f"For N = {n}, it takes {time_taken:.6f} seconds")
+                elif another_n == 'N':
+                    break
+                else:
+                    print("Invalid input. Please enter Y or N.")
 
         
 
