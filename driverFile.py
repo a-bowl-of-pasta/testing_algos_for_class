@@ -25,16 +25,16 @@ if __name__ == "__main__":
 
         if choice == '1':
             algorithm_name = "Bubble Sort"
-            sorting_function = bubbleSort
+            sorting_function = oa.bubbleSort
         elif choice == '2':
             algorithm_name = "Merge Sort"
-            sorting_function = mergeSort
+            sorting_function = oa.mergeSort
         elif choice == '3':
             algorithm_name = "Quick Sort"
-            sorting_function = quickSort
+            sorting_function = oa.quickSort
         elif choice == '4':
             algorithm_name = "Insertion Sort"
-            sorting_function = insertionSort
+            sorting_function = oa.insertionSort
         else:
             print("Invalid choice. Please try again.")
             continue
@@ -69,13 +69,13 @@ if __name__ == "__main__":
 
             for n in sizes:
                 if case_choice == '1':  # Best case scenario
-                    test_data = sorted(genNums(generatedNums=n))
+                    test_data = sorted(oa.genNums(n))
                 elif case_choice == '2':  # Average case scenario
-                    test_data = genNums(generatedNums=n)
+                    test_data = oa.genNums(n)
                 elif case_choice == '3':  # Worst case scenario
-                    test_data = sorted(genNums(generatedNums=n), reverse=True)
+                    test_data = sorted(oa.genNums(n), reverse=True)
 
-                time_taken = measureTime(sorting_function, test_data)
+                time_taken = oa.measureTime(sorting_function, test_data)
                 print(f"For N = {n}, it takes {time_taken:.6f} seconds")
 
             while True:
@@ -83,13 +83,13 @@ if __name__ == "__main__":
                 if another_n == 'Y':
                     n = int(input("What is the N? "))
                     if case_choice == '1':  # Best case scenario
-                        test_data = sorted(genNums(generatedNums=n))
+                        test_data = sorted(oa.genNums(generatedNums=n))
                     elif case_choice == '2':  # Average case scenario
-                        test_data = genNums(generatedNums=n)
+                        test_data = oa.genNums(generatedNums=n)
                     elif case_choice == '3':  # Worst case scenario
-                        test_data = sorted(genNums(generatedNums=n), reverse=True)
+                        test_data = sorted(oa.genNums(generatedNums=n), reverse=True)
 
-                    time_taken = measureTime(sorting_function, test_data)
+                    time_taken = oa.measureTime(sorting_function, test_data)
                     print(f"For N = {n}, it takes {time_taken:.6f} seconds")
                 elif another_n == 'N':
                     break
@@ -98,6 +98,8 @@ if __name__ == "__main__":
 
 
         
+
+
 
     # ==== TESTING BUBBLE SORT ======
         

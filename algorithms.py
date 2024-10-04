@@ -1,4 +1,5 @@
 import random as rand
+import time
 
 # ======= bubble sort algorithm ======
 def bubbleSort(container):
@@ -114,7 +115,7 @@ def quickSortDriver(array):
 
 # ======== helper methods =======
      
-def genNums(startRange = 1, endRange = 100, generatedNums = 15):
+def genNums(generatedNums, startRange = 1, endRange = 9999999):
     
     numbersToBeSorted = []
     for  i in range(0, generatedNums):
@@ -128,7 +129,8 @@ def measureTime(sorting_function, data):
     start_time = time.perf_counter()  # timer
 
     if sorting_function == quickSort:
-        sorting_function(data.copy(), 0, len(data) - 1)  
+        #sorting_function(data.copy(), 0, len(data) - 1)
+        sorting_function(data.copy(), 0, len(data) - 1)
     else:
         sorting_function(data.copy())  
 
@@ -154,27 +156,27 @@ if __name__ == "__main__":
 
     # === insert
     print("insertion sort \n")
-    unsortedList_insert = genNums()
+    unsortedList_insert = genNums(15)
     copy_insertion = unsortedList_insert.copy()
     sortedList_insert = insertionSort(copy_insertion)
     printResults(unsortedList_insert, sortedList_insert, "inertion sort")
 
     # === bubble
     print("\n\nbubble sort\n")
-    unsortedList_bubble = genNums()
+    unsortedList_bubble = genNums(15)
     copy_bubble = unsortedList_bubble.copy()
     sortedList_bubble = bubbleSort(copy_bubble)
     printResults(unsortedList_bubble, sortedList_bubble, "bubble sort")
 
     #=== merge
     print("\n\nmerge sort\n")
-    unsortedList_merge = genNums()
+    unsortedList_merge = genNums(15)
     sortedList_merge = mergeSort(unsortedList_merge)
     printResults(unsortedList_merge, sortedList_merge, "merge sort")
 
     # === quick
     print("\n\nquick sort\n")
-    unsortedList_quick = genNums()
+    unsortedList_quick = genNums(15)
     copy_quickSort = unsortedList_quick.copy()
     sortedList_quick = quickSort(copy_quickSort, 0, len(copy_quickSort) - 1)
     printResults(unsortedList_quick, sortedList_quick, "quick sort")
