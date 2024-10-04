@@ -123,6 +123,20 @@ def genNums(startRange = 1, endRange = 100, generatedNums = 15):
 
     return numbersToBeSorted
 
+# ======== Added timer ==========
+def measureTime(sorting_function, data):
+    start_time = time.perf_counter()  # timer
+
+    if sorting_function == quickSort:
+        sorting_function(data.copy(), 0, len(data) - 1)  
+    else:
+        sorting_function(data.copy())  
+
+    end_time = time.perf_counter()
+    return end_time - start_time
+
+
+
 def printResults(unsortedList, sortedList, algorithmUsed):
     print(f"the algorithm used was {algorithmUsed}")
     print (f"the unsorted list is :: {unsortedList}")
