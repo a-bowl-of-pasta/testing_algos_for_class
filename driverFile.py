@@ -65,7 +65,7 @@ if __name__ == "__main__":
                 print("Invalid case choice. Please try again.")
                 continue
 
-            print(case_description) 
+            print(case_description)  
 
             for n in sizes:
                 if case_choice == '1':  # Best case scenario
@@ -95,7 +95,6 @@ if __name__ == "__main__":
                     break
                 else:
                     print("Invalid input. Please enter Y or N.")
-
 
 
         
