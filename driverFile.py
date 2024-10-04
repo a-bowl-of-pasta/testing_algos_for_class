@@ -53,20 +53,27 @@ if __name__ == "__main__":
 
             # List of predefined sizes
             sizes = [100, 1000, 10000]
+            case_description = ""
+
+            if case_choice == '1':  # Best case scenario
+                case_description = "In best case,"
+            elif case_choice == '2':  # Average case scenario
+                case_description = "In average case,"
+            elif case_choice == '3':  # Worst case scenario
+                case_description = "In worst case,"
+            else:
+                print("Invalid case choice. Please try again.")
+                continue
+
+            print(case_description)  # Print the case description once
 
             for n in sizes:
                 if case_choice == '1':  # Best case scenario
                     test_data = sorted(genNums(generatedNums=n))
-                    print(f"In best case,")
                 elif case_choice == '2':  # Average case scenario
                     test_data = genNums(generatedNums=n)
-                    print(f"In average case,")
                 elif case_choice == '3':  # Worst case scenario
                     test_data = sorted(genNums(generatedNums=n), reverse=True)
-                    print(f"In worst case,")
-                else:
-                    print("Invalid case choice. Please try again.")
-                    continue
 
                 time_taken = measureTime(sorting_function, test_data)
                 print(f"For N = {n}, it takes {time_taken:.6f} seconds")
@@ -77,13 +84,10 @@ if __name__ == "__main__":
                     n = int(input("What is the N? "))
                     if case_choice == '1':  # Best case scenario
                         test_data = sorted(genNums(generatedNums=n))
-                        print(f"In best case,")
                     elif case_choice == '2':  # Average case scenario
                         test_data = genNums(generatedNums=n)
-                        print(f"In average case,")
                     elif case_choice == '3':  # Worst case scenario
                         test_data = sorted(genNums(generatedNums=n), reverse=True)
-                        print(f"In worst case,")
 
                     time_taken = measureTime(sorting_function, test_data)
                     print(f"For N = {n}, it takes {time_taken:.6f} seconds")
@@ -91,6 +95,8 @@ if __name__ == "__main__":
                     break
                 else:
                     print("Invalid input. Please enter Y or N.")
+
+
 
         
 
