@@ -65,7 +65,7 @@ if __name__ == "__main__":
                 print("Invalid case choice. Please try again.")
                 continue
 
-            print(case_description)  # Print the case description once
+            print(case_description) 
 
             for n in sizes:
                 if case_choice == '1':  # Best case scenario
